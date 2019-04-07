@@ -1,28 +1,13 @@
 # Saffweb-DHL-Extension
-Saffweb DHL is a full featured DHL shipping extension developed using the DHL Toolkit. It connects seamlessly with DHL online services to provide you with the following features: 1 Quoting and Capability - Get shipping rate based on weight for client in checkout page 2 Shipment Creation - Create the shipment from the backend. Print Airway Bill (with PDF Label) and get the Tracking code 3 Pickup services- Request Pickup with time and date. Modify and Cancel Pickup. 4 Tracking- Track the shipment The extension can be used for any of the countries supported by DHL. To use it, you require a DHL shipping account. Please visit your local DHL website to get your DHL account registered. You also need to define your product's dimensions (LxWxH) and weights. - Easy to install.  - No files will be overwritten. - 100% satisfaction. - Quick and helpful assistance !!.
+Saffweb DHL is a full featured DHL shipping extension developed using the DHL Toolkit. It connects seamlessly with DHL online services to provide you with the following features: 1 Quoting and Capability - Get shipping rate based on weight for client in checkout page 2 Shipment Creation - Create the shipment from the backend. Print Airway Bill (with PDF Label) and get the Tracking code 3 Pickup services- Request Pickup with time and date. Modify and Cancel Pickup. 4 Tracking- Track the shipment The extension can be used for any of the countries supported by DHL. To use it, you require a DHL shipping account. Please visit your local DHL website to get your DHL account registered. You also need to define your product's dimensions (LxWxH) and weights.
 
 REQUIREMENTS:
 =============
 Opencart Versions 3.x.x.x
 
-WHAT DOES IT DO:
-================
-Saffweb DHL is a full featured DHL shipping extension developed using the DHL Toolkit. It connects seamlessly with DHL online services to provide you with the following features:
-1 Quoting and Capability - Get shipping rate based on weight for client in checkout page
-2 Shipment Creation - Create the shipment from the backend. Print Airway Bill (with PDF Label) and get the Tracking code
-3 Pickup services - Request Pickup with time and date. Modify and Cancel Pickup.
-4 Tracking - Track the shipment
-The extension can be used for any of the countries supported by DHL. To use it, you require a DHL shipping account. Please visit your local DHL website to get your DHL account registered. You also need to define your product's dimensions (L x W x H) and weights.
-
-
 COMPATIBILITY:
 ===============
 Successfully tested on OpenCart Version 3.0.2.0
-
-LICENSE:
-==========
-THIS IS A COMMERCIAL SOFTWARE. CUSTOMER SHALL NOT: RENT, LEASE, DISTRIBUTE, SELL, OR CREATE DERIVATIVE WORKS OF THE SOFTWARE.  
-
 
 INSTALLATION:
 ===============
