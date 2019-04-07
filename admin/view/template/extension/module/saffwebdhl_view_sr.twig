@@ -1,0 +1,185 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right"><a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-cart-arrow-down"></i> {{ text_order }}</h3>
+       </div>
+      </div>
+     </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-shopping-cart"></i> {{ text_shipper_details }}</h3>
+          </div>
+          <table class="table">
+            <tbody>
+            {% if shipping_saffwebdhl_company_name %}
+			<tr>
+                <td>{{ text_company_name }}</td>
+                <td>{{ shipping_saffwebdhl_company_name }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_person_name %}
+			<tr>
+                <td>{{ text_person_name }}</td>
+                <td>{{ shipping_saffwebdhl_person_name }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_email %}
+			<tr>
+                <td>{{ text_email }}</td>
+                <td>{{ shipping_saffwebdhl_email }}</td>
+            </tr>
+           {% endif %}
+            {% if shipping_saffwebdhl_phone_number %}
+			<tr>
+                <td>{{ text_phone_number }}</td>
+                <td>{{ shipping_saffwebdhl_phone_number }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_phone_extension %}
+			<tr>
+                <td>{{ text_phone_extension }}</td>
+                <td>{{ shipping_saffwebdhl_phone_extension }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_address_1 %}
+			<tr>
+                <td>{{ text_address_1 }}</td>
+                <td>{{ shipping_saffwebdhl_address_1 }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_address_2 %}
+			<tr>
+                <td>{{ text_address_2 }}</td>
+                <td>{{ shipping_saffwebdhl_address_2 }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_postal_code %}
+			<tr>
+                <td>{{ text_postal_code }}</td>
+                <td>{{ shipping_saffwebdhl_postal_code }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_city %}
+			<tr>
+                <td>{{ text_city }}</td>
+                <td>{{ shipping_saffwebdhl_city }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_division %}
+			<tr>
+                <td>{{ text_division }}</td>
+                <td>{{ shipping_saffwebdhl_division }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_division_code %}
+			<tr>
+                <td>{{ text_division_code }}</td>
+                <td>{{ shipping_saffwebdhl_division_code }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_zone_id %}
+			<tr>
+                <td>{{ text_zone_id }}</td>
+                <td>{{ shipping_saffwebdhl_zone_id }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_country_code %}
+			<tr>
+                <td>{{ text_country_code }}</td>
+                <td>{{ shipping_saffwebdhl_country_code }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_saffwebdhl_country_name %}
+			<tr>
+                <td>{{ text_country_name }}</td>
+                <td>{{ shipping_saffwebdhl_country_name }}</td>
+            </tr>
+            {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user"></i> {{ text_customer_detail }}</h3>
+          </div>
+          <table class="table">
+			{% if shipping_company %}
+			<tr>
+                <td>{{ text_shipping_company }}</td>
+                <td>{{ shipping_company }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>{{ text_shipping_name }}</td>
+                <td>{{ shipping_firstname }} {{ shipping_lastname }}</td>
+            </tr>
+			{% if shipping_email %}
+			<tr>
+                <td>{{ text_shipping_email }}</td>
+                <td>{{ shipping_email }}</td>
+            </tr>
+            {% endif %}
+            {% if shipping_telephone %}
+			<tr>
+                <td>{{ text_shipping_phone }}</td>
+                <td>{{ shipping_telephone }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>{{ text_shipping_address_1 }}</td>
+                <td>{{ shipping_address_1 }}</td>
+            </tr>
+            {% if shipping_address_2 %}
+			<tr>
+                <td>{{ text_shipping_address_2 }}</td>
+                <td>{{ shipping_address_2 }}</td>
+            </tr>
+            {% endif %}
+			<tr>
+                <td>{{ text_shipping_postcode }}</td>
+                <td>{{ shipping_postcode }}</td>
+            </tr>
+			<tr>
+                <td>{{ text_shipping_city }}</td>
+                <td>{{ shipping_city }}</td>
+            </tr>
+			<tr>
+                <td>{{ text_shipping_zone }}</td>
+                <td>{{ shipping_zone }}</td>
+            </tr>
+			<tr>
+                <td>{{ text_shipping_country_code }}</td>
+                <td>{{ shipping_country_code }}</td>
+            </tr>
+			<tr>
+                <td>{{ text_shipping_country }}</td>
+                <td>{{ shipping_country }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }} 

@@ -1,0 +1,188 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right"><a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-cart-arrow-down"></i> {{ text_order }}</h3>
+       </div>
+      </div>
+     </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-info-circle"></i>{{ text_book_pickup_header }}</h3>
+          </div>
+          <div class="panel-body">
+          
+            <!--DHL Booking Form !-->
+          {% if error_warning %}
+            <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            {% endif %}
+           
+            <form action="{{ action }}" method="post" enctype="multipart/form-data" id="dhlbooking_form" class="form-horizontal">
+               <div class="form-group">
+                <label class="col-sm-4 control-label" for="awb_number">{{ entry_awb_number }}</label>
+                <div class="col-sm-4">
+                  <select name="awb_number" id="input-status" class="form-control">
+                    {% for awb in alllawbs %}
+                    <option value="{{ awb.airway_bill_number }}" selected="selected">{{ awb.airway_bill_number }}</option>
+                    {% endfor %}              
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="package_location">{{ entry_package_location }}</label>
+                <div class="col-sm-4">
+                   <input type="text" name="package_location" value="{{ package_location }}" placeholder="{{ help_package_location }}" id="input-parent" class="form-control" />
+                {% if error_package_location %}
+                <div class="text-danger">{{ error_package_location }}</div>
+               {% endif %}
+              </div>
+             </div>
+              
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="input_pickup_date">{{ entry_pickup_date }}</label>
+                <div class="col-sm-4">
+                  <div class="input-group date">
+                    <input type="text" name="pickup_date" value="{{ pickup_date }}" placeholder="{{ entry_pickup_date }}" data-date-format="YYYY-MM-DD" id="input_pickup_date" class="form-control" />
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                    </span></div>
+                {% if error_pickup_date %}
+                <div class="text-danger">{{ error_pickup_date }}</div>
+               {% endif %}
+              </div>
+             </div>
+              
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="input_ready_by_time">{{ entry_ready_by_time }}</label>
+                <div class="col-sm-4">
+                  <div class="input-group time">
+                    <input type="text" name="ready_by_time" value="{{ ready_by_time }}" placeholder="{{ entry_ready_by_time }}" data-date-format="HH:mm" id="ready_by_time" class="form-control" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                    </span></div>
+                {% if error_ready_by_time %}
+                <div class="text-danger">{{ error_ready_by_time }}</div>
+               {% endif %}
+              </div>
+             </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="input_close_time">{{ entry_close_time }}</label>
+                <div class="col-sm-4">
+                  <div class="input-group time">
+                    <input type="text" name="close_time" value="{{ close_time }}" placeholder="{{ entry_close_time }}" data-date-format="HH:mm" id="close_time" class="form-control" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                    </span></div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="after_hours_closing_time">{{ entry_after_hours_closing_time }}</label>
+                <div class="col-sm-4">
+                  <div class="input-group time">
+                    <input type="text" name="after_hours_closing_time" value="{{ after_hours_closing_time }}" placeholder="{{ entry_after_hours_closing_time }}" data-date-format="HH:mm" id="after_hours_closing_time" class="form-control" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                    </span></div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="after_hours_location">{{ entry_after_hours_location }}</label>
+                <div class="col-sm-4">
+                   <input type="text" name="after_hours_location" value="{{ after_hours_location }}" placeholder="{{ help_package_location }}" id="input-parent" class="form-control" />
+                </div>
+              </div>
+
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="requestor_contact_name">{{ entry_requestor_contact_name }}</label>
+                <div class="col-sm-4">
+                   <input type="text" name="requestor_contact_name" value="{{ requestor_contact_name }}" placeholder="{{ person_name }}" id="input-parent" class="form-control" />
+                {% if error_requestor_contact_name %}
+                <div class="text-danger">{{ error_requestor_contact_name }}</div>
+               {% endif %}
+              </div>
+             </div>
+
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="requestor_contact_phone">{{ entry_requestor_contact_phone }}</label>
+                <div class="col-sm-4">
+                   <input type="text" name="requestor_contact_phone" value="{{ requestor_contact_phone }}" placeholder="{{ phone_number }}" id="input-parent" class="form-control" />
+                {% if error_requestor_contact_phone %}
+                <div class="text-danger">{{ error_requestor_contact_phone }}</div>
+               {% endif %}
+              </div>
+             </div>
+
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="pickup_contact_name">{{ entry_pickup_contact_name }}</label>
+                <div class="col-sm-4">
+                   <input type="text" name="pickup_contact_name" value="{{ pickup_contact_name }}" placeholder="{{ person_name }}" id="input-parent" class="form-control" />
+                {% if error_pickup_contact_name %}
+                <div class="text-danger">{{ error_pickup_contact_name }}</div>
+               {% endif %}
+              </div>
+             </div>
+
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="pickup_contact_phone">{{ entry_pickup_contact_phone }}</label>
+                <div class="col-sm-4">
+                   <input type="text" name="pickup_contact_phone" value="{{ pickup_contact_phone }}" placeholder="{{ phone_number }}" id="input-parent" class="form-control" />
+                {% if error_pickup_contact_phone %}
+                <div class="text-danger">{{ error_pickup_contact_phone }}</div>
+               {% endif %}
+              </div>
+             </div>
+              
+              <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-order-status"> </label>
+                <div class="col-sm-4">
+                  <input type="submit" name="submit" value="{{ button_book_pickup_service }}" class="btn btn-primary">
+                </div>
+              </div>
+           </form>
+          </div>
+       </div>
+     </div>
+    </div><!--end row!-->
+  </div><!--end container fluid!-->
+</div> <!--end content!-->
+</div> <!--end content!-->
+<script type="text/javascript"><!--
+$('.date').datetimepicker({
+	pickTime: false
+});
+
+$('.time').datetimepicker({
+	pickDate: false
+});
+
+$('.datetime').datetimepicker({
+	pickDate: true,
+	pickTime: true
+});
+//--></script>
+{{ footer }} 

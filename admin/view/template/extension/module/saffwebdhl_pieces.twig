@@ -1,0 +1,131 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right"><a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <div class="panel panel-default">
+       <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-cart-arrow-down"></i> {{ text_order }}</h3>
+       </div>
+      </div>
+     </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-dropbox"></i>{{ text_add_pieces }}</h3>
+            <!--Tips !-->
+            <br /><br />
+            <p>Enter the weight and dimensions for each piece separately. For dimensions, enter whole numbers only and round up if required e.g. if the length is 30.5cm, round up to 31cm.</p>
+          </div>
+          <div class="panel-body">
+            <!--DHL Pieces Form !-->
+            {% if error_warning %}
+            <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            {% endif %}
+            <form action="{{ action }}" method="post" enctype="multipart/form-data" id="dhlpieces_form" class="form-horizontal">
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="height">{{ entry_height }}</label>
+                <div class="col-sm-4">
+                   <input type="number" name="height" value="{{ height }}" placeholder="{{ height }}" id="input-parent" class="form-control" />
+                {% if error_height %}
+                <div class="text-danger">{{ error_height }}</div>
+               {% endif %}
+               </div>
+              </div>
+             
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="depth">{{ entry_depth }}</label>
+                <div class="col-sm-4">
+                   <input type="number" name="depth" value="{{ depth }}" placeholder="{{ depth }}" id="input-parent" class="form-control" />
+                {% if error_depth %}
+                <div class="text-danger">{{ error_depth }}</div>
+               {% endif %}
+               </div>
+              </div>
+             
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="width">{{ entry_width }}</label>
+                <div class="col-sm-4">
+                   <input type="number" name="width" value="{{ width }}" placeholder="{{ width }}" id="input-width" class="form-control" />
+                {% if error_width %}
+                <div class="text-danger">{{ error_width }}</div>
+               {% endif %}
+               </div>
+              </div>
+              
+              <div class="form-group required">
+                <label class="col-sm-4 control-label" for="weight">{{ entry_weight }}</label>
+                <div class="col-sm-4">
+                   <input type="number" step="0.01" name="weight" value="{{ weight }}" placeholder="{{ weight }}" id="input-weight" class="form-control" />
+                {% if error_weight %}
+                <div class="text-danger">{{ error_weight }}</div>
+               {% endif %}
+               </div>
+              </div>
+                
+              <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-order-status"> </label>
+                <div class="col-sm-8">
+                  <input type="submit" name="submit" value="{{ text_add_pieces }}" class="btn btn-primary">
+                </div>
+              </div>
+           </form>
+           <br />
+          
+            <!--DHL Pieces !-->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>        
+                    <td class="text-left">{{ column_height }}</td>
+                    <td class="text-left">{{ column_depth }}</td>
+                    <td class="text-left">{{ column_width }}</td>
+                    <td class="text-left">{{ column_weight }}</td>
+                    <td class="text-right">{{ column_pieces_action }}</td>
+                  </tr>
+                </thead>
+                <tbody>
+                {% if allpieces %}
+                {% for record in allpieces %}
+                  <tr>
+                     <td class="text-left">{{ record.height }}</td>
+                     <td class="text-left">{{ record.depth }}</td>
+                     <td class="text-left">{{ record.width }}</td>
+                     <td class="text-left">{{ record.weight }}</td>
+                     <td class="text-right">
+                     <a href="{{ record.delete_piece }}" data-toggle="tooltip" title="{{ text_delete_piece }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a> 
+                     </td>
+                  </tr>
+                  {% endfor %}
+                  {% else %}
+                  <tr>
+                    <td class="center" colspan="5">{{ text_no_results }}</td>
+                  </tr>
+                  {% endif %}
+                  </tbody>
+                </table>
+              </div>
+          </div>
+       </div>
+     </div>
+    </div><!--end row!-->
+  </div><!--end container fluid!-->
+</div> <!--end content!-->
+{{ footer }} 
